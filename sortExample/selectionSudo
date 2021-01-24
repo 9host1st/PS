@@ -1,0 +1,7 @@
+for i = 0 to n - 1:
+    input(number);
+    a[i] = number;
+    for j = 0 to i:
+        if a[j] > number:
+            swap(a[j], number)
+

@@ -1,0 +1,8 @@
+a = {a0, a1, .... , an}
+priority_queue<int> pq
+for i = 0 to n: 
+    push(a[i] to pq)
+for i = n to 0:
+    a[i] = pq.top
+    pq.pop
+
