@@ -1,22 +1,17 @@
 #include <bits/stdc++.h>
 using namespace std;
-vector<pair<double, double>> a;
-int t;
-double ans;
+using pii=pair<double, double>;
+int N;
+pii p[10001];
+double ccw(double x1, double x2, double x3, double y1, double y2, double y3) {
+	double res = x1 * y2 + x2 * y3 + x3 * y1;
+	res += (-y1 * x2 - y2 * x3 - y3 * x1);
+	return res / 2;
+}
 int main() {
-    cin >> t;
-    for(int i = 1; i <= t; i++) {
-        double x, y;
-        cin >> x >> y;
-        a.push_back({x, y});
-    }
-    for(int i = 0; i < t; i++) {
-        if(i == t - 1) 
-            ans += ((a[i].first + a[0].first)*(a[i].second - a[0].second));
-        else
-            ans += ((a[i].first + a[i + 1].first) * (a[i].second - a[i + 1].second));
-    }
-    ans = abs(ans) * 0.5;
-
-    printf("%.1f", ans);
+	cin >> N;
+	for(int i = 0; i < N; i++) cin >> p[i].first >> p[i].second;
+	double res = 0;
+	for(int i = 1; i < N; i++) res += ccw(p[0].first, p[i - 1].first, p[i].first, p[0].second, p[i - 1].second, p[i].second);
+	printf("%.1lf", abs(res));
 }
